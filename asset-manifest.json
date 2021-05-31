@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Dailygo/static/css/main.d4b46268.chunk.css",
-    "main.js": "/Dailygo/static/js/main.b5d1a54a.chunk.js",
-    "main.js.map": "/Dailygo/static/js/main.b5d1a54a.chunk.js.map",
+    "main.css": "/Dailygo/static/css/main.f47ceb6c.chunk.css",
+    "main.js": "/Dailygo/static/js/main.4e6d7cd6.chunk.js",
+    "main.js.map": "/Dailygo/static/js/main.4e6d7cd6.chunk.js.map",
     "runtime-main.js": "/Dailygo/static/js/runtime-main.905dc08a.js",
     "runtime-main.js.map": "/Dailygo/static/js/runtime-main.905dc08a.js.map",
     "static/js/2.06f9fe9b.chunk.js": "/Dailygo/static/js/2.06f9fe9b.chunk.js",
     "static/js/2.06f9fe9b.chunk.js.map": "/Dailygo/static/js/2.06f9fe9b.chunk.js.map",
     "index.html": "/Dailygo/index.html",
-    "static/css/main.d4b46268.chunk.css.map": "/Dailygo/static/css/main.d4b46268.chunk.css.map",
+    "static/css/main.f47ceb6c.chunk.css.map": "/Dailygo/static/css/main.f47ceb6c.chunk.css.map",
     "static/js/2.06f9fe9b.chunk.js.LICENSE.txt": "/Dailygo/static/js/2.06f9fe9b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.905dc08a.js",
     "static/js/2.06f9fe9b.chunk.js",
-    "static/css/main.d4b46268.chunk.css",
-    "static/js/main.b5d1a54a.chunk.js"
+    "static/css/main.f47ceb6c.chunk.css",
+    "static/js/main.4e6d7cd6.chunk.js"
   ]
 }
