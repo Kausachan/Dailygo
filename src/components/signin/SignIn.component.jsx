@@ -20,7 +20,7 @@ class SignIn extends Component{
 			await auth.signInWithEmailAndPassword(email, password);
 		}
 		catch(err){
-			console.log("error occured, try again later");
+			alert('Invalid credentials');
 		}
 		this.setState({email : '', password : ''})
 	}
