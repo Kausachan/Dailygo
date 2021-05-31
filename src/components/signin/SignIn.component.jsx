@@ -9,7 +9,8 @@ class SignIn extends Component{
 		super();
 		this.state = {
 			email : '',
-			password : ''
+			password : '',
+			invalid : false
 		}
 	}
 
@@ -18,9 +19,10 @@ class SignIn extends Component{
 		event.preventDefault();
 		try{
 			await auth.signInWithEmailAndPassword(email, password);
+			this.setState({invalid : false})
 		}
 		catch(err){
-			alert('Invalid credentials');
+			this.setState({invalid : true})
 		}
 		this.setState({email : '', password : ''})
 	}
@@ -33,12 +35,20 @@ class SignIn extends Component{
 	} 
 
 	render(){
-		const {email, password} = this.state;
+		const {email, password, invalid} = this.state;
 		return(
 			<div className = 'sign-in'>
 				<h3>I Already Have An Account</h3>
 				<form onSubmit = {this.handleSubmit}>
+
+					{
+						invalid ?
+						<p style = {{color : "#c41e0c"}}> invalid username or password</p>
+						:
+						null
+					}
 					<FormInput
+						invalid = {invalid}
 						name = "email"
 						type = "email"
 						label = "Email"
@@ -47,6 +57,7 @@ class SignIn extends Component{
 						required
 					/>
 					<FormInput
+						invalid = {invalid}
 						name = "password"
 						type = "password"
 						label = "Password"
