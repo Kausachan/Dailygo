@@ -1,0 +1,13 @@
+.task-box{
+	width : 55%;
+	height : 350px;
+	flex-direction: column;
+	border-style: double;
+	border-color: black;
+	padding : 5px;
+	overflow-y: scroll;
+	
+	.no-task{
+		margin: 22% 36%;
+	}
+}

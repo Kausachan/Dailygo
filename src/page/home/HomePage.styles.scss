@@ -1,0 +1,20 @@
+.home-task-box{
+	height : 500px;
+
+	.task-input-align{
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+	}
+
+	.home-task-input{
+		margin-top: 10px;
+		margin-left: 360px;
+	}
+
+	.home-text{
+		font-weight: bold;
+		font-size: 26px;
+		margin-left: 560px;
+	}
+}

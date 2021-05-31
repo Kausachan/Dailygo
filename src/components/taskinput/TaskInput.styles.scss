@@ -1,0 +1,22 @@
+.task-input-button{
+	width : 500px;
+	display : flex;
+	justify-content: space-around;
+	padding : 1px 0px;
+	input{
+		width:  300px;
+		border-radius: 3px;
+		border : 2px solid black;
+		font-weight: bold;
+		font-size: 15px;
+	}
+
+	.add-task{
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	.add-button{
+		margin-bottom: 1px;
+	}
+}

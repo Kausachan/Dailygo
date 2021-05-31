@@ -1,0 +1,42 @@
+.header{
+	height: 60px;
+	width : 100%;
+	margin-bottom : 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.displayName{
+		text-decoration: none;
+		cursor: pointer;
+		color: black;
+
+		&.no-click{
+			pointer-events: none;
+		}
+	}
+
+	.option{
+		min-width : 20%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.options{
+		text-decoration: none;
+		color: black;
+	}
+
+	.options-clickable{
+		cursor : pointer;
+
+		&:hover{
+			opacity : 0.5;
+		}
+	}
+}
+.font{
+	font-size: 18px ;
+	font-weight: bold;
+}
