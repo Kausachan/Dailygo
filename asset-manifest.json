@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Dailygo/static/css/main.c96e938c.chunk.css",
+    "main.js": "/Dailygo/static/js/main.a2a78539.chunk.js",
+    "main.js.map": "/Dailygo/static/js/main.a2a78539.chunk.js.map",
+    "runtime-main.js": "/Dailygo/static/js/runtime-main.905dc08a.js",
+    "runtime-main.js.map": "/Dailygo/static/js/runtime-main.905dc08a.js.map",
+    "static/js/2.7c9857c4.chunk.js": "/Dailygo/static/js/2.7c9857c4.chunk.js",
+    "static/js/2.7c9857c4.chunk.js.map": "/Dailygo/static/js/2.7c9857c4.chunk.js.map",
+    "index.html": "/Dailygo/index.html",
+    "static/css/main.c96e938c.chunk.css.map": "/Dailygo/static/css/main.c96e938c.chunk.css.map",
+    "static/js/2.7c9857c4.chunk.js.LICENSE.txt": "/Dailygo/static/js/2.7c9857c4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.905dc08a.js",
+    "static/js/2.7c9857c4.chunk.js",
+    "static/css/main.c96e938c.chunk.css",
+    "static/js/main.a2a78539.chunk.js"
+  ]
+}
