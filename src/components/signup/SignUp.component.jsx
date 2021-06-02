@@ -28,6 +28,7 @@ class SignUp extends React.Component{
 			createUserProfile(user, {displayName})
 		}
 		catch(error){
+			alert("error occured try again later...");
 			console.error(error)
 		}
 		this.setState({displayName : '',
