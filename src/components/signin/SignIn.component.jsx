@@ -71,7 +71,7 @@ class SignIn extends Component{
 					/>
 					<div className = 'button'>
 						<CustomButton type = "submit" onClick = {this.handleSubmit}> SIGN IN </CustomButton>
-						<CustomButton type = "submit" onClick = {() => signInWithGoogle()} IsGoogleSignin> SIGN IN WITH GOOGLE </CustomButton>
+						<CustomButton type = "submit" disabled = {true} onClick = {() => signInWithGoogle()} IsGoogleSignin> SIGN IN WITH GOOGLE </CustomButton>
 					</div>
 				</form>
 
