@@ -19,7 +19,6 @@ unsubscribe_snap = null;
 
 componentDidMount(){
   this.unsubscribe = auth.onAuthStateChanged(async userAuth => {
-    console.log(userAuth);
     if(userAuth)
     {
       this.props.history.push('/home');
