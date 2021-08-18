@@ -5,35 +5,29 @@ import './App.css';
 import HomePage from './page/home/HomePage.component';
 import Header from './components/header/Header.component';
 import {auth, createUserProfile} from './firebase/Firebase.utils';
+import {connect} from 'react-redux';
+import {setUserAction} from './redux/user/user.actions';
 
 class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      currentUser : null
-    }
-  }
 
 unsubscribe = null;
 unsubscribe_snap = null;
 
 componentDidMount(){
+  const {currentUser, setUserAction} = this.props;
   this.unsubscribe = auth.onAuthStateChanged(async userAuth => {
     if(userAuth)
     {
       this.props.history.push('/home');
       const userRef = await createUserProfile(userAuth);
       this.unsubscribe_snap = userRef.onSnapshot(snapshot =>{
-        this.setState({
-          currentUser : {
+        setUserAction({
             id : snapshot.id,
           ...snapshot.data()
-        }})
+        })
       })
     }
-    else{
-      this.setState({currentUser : userAuth})
-    }
+    else setUserAction(userAuth);
   });
 }
 
@@ -45,7 +39,7 @@ componentWillUnmount(){
   render(){
     return(
       <div>
-        <Header currentUser = {this.state.currentUser} bingos = {!this.state.currentUser ? null : this.state.currentUser.bingos}/>
+        <Header currentUser = {this.props.currentUser} bingos = {0}/>
         <Switch>
           <Route exact path = "/" component = {SignIn_SignUp}/>
           <Route exact path = "/home" component = {HomePage}/>
@@ -55,5 +49,12 @@ componentWillUnmount(){
   }
 }
 
+const mapStateToProps = ({user}) =>({
+  currentUser : user.currentUser
+})
 
-export default withRouter(App);
+const DispatchState = (dispatch) => ({
+  setUserAction : user => dispatch(setUserAction(user))
+})
+
+export default connect(mapStateToProps, DispatchState)(withRouter(App));

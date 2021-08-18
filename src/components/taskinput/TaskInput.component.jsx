@@ -50,7 +50,6 @@ class TaskInput extends React.Component{
 	}
 
 	handlePress = (event) =>{
-		console.log(event.which)
 		if(event.which === 13) this.handleSubmit();
 	}
 
