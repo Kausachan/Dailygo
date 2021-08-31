@@ -3,6 +3,8 @@ import './SignIn.styles.scss';
 import CustomButton from '../custombutton/CustomButton.component';
 import FormInput from '../forminput/FormInput.component';
 import {signInWithGoogle, auth} from '../../firebase/Firebase.utils';
+import {setLoader} from '../../redux/loader/loader.action'; 
+import {connect} from 'react-redux';
 
 class SignIn extends Component{
 	constructor(){
@@ -16,19 +18,28 @@ class SignIn extends Component{
 
 	handleSubmit = async (event) =>{
 		const {email, password} = this.state;
+		const {setLoader} = this.props;
 		event.preventDefault();
-		try{
-			await auth.signInWithEmailAndPassword(email, password);
-			this.setState({email : '',
-				password : '',
-				invalid : false})
+		const func = async() => {
+			try{
+				await auth.signInWithEmailAndPassword(email, password);
+				this.setState({email : '',
+					password : '',
+					invalid : false})
+			}
+			catch(err){
+				this.setState({
+					email : '',
+					password : '',
+					invalid : true})
+			}
+			finally{
+				setLoader(null);
+			}
+			
 		}
-		catch(err){
-			this.setState({
-				email : '',
-				password : '',
-				invalid : true})
-		}
+		func();
+		setLoader(true);
 	}
 
 	handleChange = (event) =>{
@@ -47,7 +58,7 @@ class SignIn extends Component{
 
 					{
 						invalid ?
-						<p style = {{color : "#c41e0c"}}> invalid username or password</p>
+						<p style = {{color : "#c41e0c"}}>* invalid username or password *</p>
 						:
 						null
 					}
@@ -80,4 +91,8 @@ class SignIn extends Component{
 	}
 }
 
-export default SignIn;
+const dispatchAction = (dispatch) =>({
+	setLoader : loader => dispatch(setLoader(loader))
+}) 
+
+export default connect(null, dispatchAction)(SignIn);
