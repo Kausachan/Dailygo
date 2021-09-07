@@ -2,57 +2,41 @@ import React from 'react';
 import './TaskBox.styles.scss';
 import Task from '../task/Task.component';
 import {auth, firestore} from '../../firebase/Firebase.utils';
+import {connect} from 'react-redux';
+import Loader from 'react-loader';
 
 class TaskBox extends React.Component{
-	constructor(){
-		super();
-		this.state = {
-			currentUser : {}
-		}
-	}
 
-	unsubscribe = null;
-	unsubscribe_snap = null;
-
-	componentDidMount(){
-		this.unsubscribe = auth.onAuthStateChanged(async userAuth =>{
-			if(userAuth)
-			{
-				const userRef = await firestore.doc(`users/${userAuth.uid}`);
-				this.unsubscribe_snap = await userRef.onSnapshot(snapshot =>{
-					this.setState({
-						currentUser : {...snapshot.data()},
-						userRef
-					})
-				})
-			}
-		})
-	}
-
-	componentWillUnmount(){
-		this.unsubscribe();
-		this.unsubscribe_snap();
-	}
-
-	deleteTask = (i) =>{
-		const arr = this.state.currentUser.tasks.filter((task, ind) => {return (ind !== i+1)})
-		this.state.userRef.update({
+	deleteTask = async (i) =>{
+		const arr = await this.props.currentUser.tasks.filter((task, ind) => {return (ind !== i+1)})
+		const userRef = await firestore.doc(`users/${this.props.currentUser.id}`)
+		userRef.update({
 			tasks : arr
 		})
 	}
 
 	completedTask = (i, val) =>{
-		const arr = this.state.currentUser.tasks.map((task, ind) =>{
+		const arr = this.props.currentUser.tasks.map((task, ind) =>{
 			if(ind === i+1) return {...task, completed : val}
 			return {...task} 
 		})
-		this.state.userRef.update({
+		const userRef = firestore.doc(`users/${this.props.currentUser.id}`)
+		userRef.update({
 			tasks : arr
 		})
 	}
 
 	render(){
-		const {currentUser} = this.state;
+		const {currentUser} = this.props;
+		if(!currentUser)
+		 return (
+		 	<div className = "task-box">
+		 		<Loader loaded={false} lines={10} length={7} width={5} radius={15}
+	            corners={1} rotate={0} direction={1} color="#000" speed={1.5}
+	            trail={60} shadow={true} hwaccel={false} className="spinner"
+	            zIndex={2e9} top="50%" left="50%" scale={1.00}
+	            loadedClassName="loadedContent" />
+	        </div>)
 		return(
 			<div className = "task-box">
 				<div>
@@ -77,4 +61,8 @@ class TaskBox extends React.Component{
 	}
 }
 
-export default TaskBox;
+const MapStateToProps = ({user}) => ({
+	currentUser : user.currentUser
+})
+
+export default connect(MapStateToProps)(TaskBox);

@@ -1,6 +1,7 @@
 import React from 'react';
 import './TaskInput.styles.scss';
-import {firestore, auth} from '../../firebase/Firebase.utils';
+import {connect} from 'react-redux';
+import {firestore} from '../../firebase/Firebase.utils';
 
 class TaskInput extends React.Component{
 	constructor(){
@@ -9,27 +10,14 @@ class TaskInput extends React.Component{
 				value : {
 					"task" : '',
 					"completed" : false
-				},
-				user : null
+				}
 		}
 	}
 
-	unsubscribe = null;
-
-	componentDidMount(){
-		this.unsubscribe = auth.onAuthStateChanged(async userAuth =>{
-			this.setState({user : userAuth});
-		})
-	}
-
-	componentWillUnmount(){
-		this.unsubscribe();
-	}
-
 	handleSubmit = async (event) =>{
-		if(this.state.user && this.state.value.task.trim() !== "")
+		if(this.props.currentUser && this.state.value.task.trim() !== "")
 		{
-			const userRef = await firestore.doc(`users/${this.state.user.uid}`);
+			const userRef = await firestore.doc(`users/${this.props.currentUser.id}`);
 			const snapshot = await userRef.get();
 			const data = await snapshot.data();
 			const tasks = data.tasks;
@@ -64,4 +52,8 @@ class TaskInput extends React.Component{
 	}
 }
 
-export default TaskInput;
+const MapStateToProps = ({user}) => ({
+	currentUser : user.currentUser
+})
+
+export default connect(MapStateToProps)(TaskInput);
