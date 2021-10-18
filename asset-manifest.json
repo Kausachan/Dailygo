@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Dailygo/static/css/main.343a9a83.chunk.css",
-    "main.js": "/Dailygo/static/js/main.753fb1a6.chunk.js",
-    "main.js.map": "/Dailygo/static/js/main.753fb1a6.chunk.js.map",
+    "main.js": "/Dailygo/static/js/main.e72d54f4.chunk.js",
+    "main.js.map": "/Dailygo/static/js/main.e72d54f4.chunk.js.map",
     "runtime-main.js": "/Dailygo/static/js/runtime-main.905dc08a.js",
     "runtime-main.js.map": "/Dailygo/static/js/runtime-main.905dc08a.js.map",
     "static/js/2.2a4e4422.chunk.js": "/Dailygo/static/js/2.2a4e4422.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.905dc08a.js",
     "static/js/2.2a4e4422.chunk.js",
     "static/css/main.343a9a83.chunk.css",
-    "static/js/main.753fb1a6.chunk.js"
+    "static/js/main.e72d54f4.chunk.js"
   ]
 }
