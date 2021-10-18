@@ -3,13 +3,12 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-	apiKey: "AIzaSyCh1bxSYvZxT4u_obnIYAp6jknOx3YfYAM",
-    authDomain: "civic-eye-240516.firebaseapp.com",
-    projectId: "civic-eye-240516",
-    storageBucket: "civic-eye-240516.appspot.com",
-    messagingSenderId: "214569337984",
-    appId: "1:214569337984:web:b416bcd09c4560b2361265",
-    measurementId: "G-L3W7K2W96N"
+	apiKey: "AIzaSyC58L0WIQ1Lt09O_xbLHVxebq-8Xh2tWGQ",
+  authDomain: "dailygo-8faa9.firebaseapp.com",
+  projectId: "dailygo-8faa9",
+  storageBucket: "dailygo-8faa9.appspot.com",
+  messagingSenderId: "143682741381",
+  appId: "1:143682741381:web:19b74054b56e0e720b75ec"
 }
 
 export const createUserProfile = async (userAuth, additionalData) =>{
